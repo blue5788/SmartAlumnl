@@ -1,0 +1,8 @@
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\bin\Debug\MessageType.exe.config
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\bin\Debug\MessageType.exe
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\bin\Debug\MessageType.pdb
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\obj\Debug\MessageType.csprojResolveAssemblyReference.cache
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\obj\Debug\MessageType.Properties.Resources.resources
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\obj\Debug\MessageType.csproj.GenerateResource.Cache
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\obj\Debug\MessageType.exe
+C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\MessageType\obj\Debug\MessageType.pdb
