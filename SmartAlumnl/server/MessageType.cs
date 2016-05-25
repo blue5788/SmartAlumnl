@@ -8,6 +8,9 @@ namespace server
 {
     class MessageType
     {
+        /// <summary>
+        ///  登录
+        /// </summary>
         public const int LOGIN_login = 1001;
     }
 }

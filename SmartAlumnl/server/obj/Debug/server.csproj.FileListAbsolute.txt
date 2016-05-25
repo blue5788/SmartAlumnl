@@ -16,3 +16,6 @@ C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\server\obj\Debug\server.csprojRes
 C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\server\obj\Debug\server.Properties.Resources.resources
 C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\server\obj\Debug\server.server_Form.resources
 C:\Users\Mac\Desktop\工程实践4\SmartAlumnl\server\obj\Debug\server.csproj.GenerateResource.Cache
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\server\bin\Debug\server.exe.config
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\server\obj\Debug\server.exe
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\server\obj\Debug\server.pdb
