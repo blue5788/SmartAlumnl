@@ -97,29 +97,28 @@ namespace server
             /// 消息对立对象
             DispatchMessage dm = new DispatchMessage(ref mf, ref _ssm);
 
-            /// 检查用户名是否可用
-            if (!dm.IsUserAvailable())
+            /// 获取消息体
+            if (!dm.GetMsgData())
             {
-                dm.OnSendUserIsNotAvailable();
-                /// return;
+                return;
             }
-
             /// 判断消息类型
             switch (dm.GetMsgType())
             {
                 case MsgType.LOGIN:
-                    MessageBox.Show("收到登录信息了");
+                    dm.Check_Login();
+                    ///MessageBox.Show("收到登录信息了");
                     break;
                 default:
                     break;
             }
 
-            /// -------------------------------  UI显示消息
-            this.Invoke(new Action(() =>
-            {
-                /// 添加消息
-                lb_Msg.Items.Add(DateTime.Now.ToString("HH:mm:ss : ") + "[" + mf.ipStr + "] saying: " + mf.msgStr);
-            }));
+            ///// -------------------------------  UI显示消息
+            //this.Invoke(new Action(() =>
+            //{
+            //    /// 添加消息
+            //    lb_Msg.Items.Add(DateTime.Now.ToString("HH:mm:ss : ") + "[" + mf.ipStr + "] saying: " + mf.msgStr);
+            //}));
         }
         #endregion
     }

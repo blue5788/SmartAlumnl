@@ -17,6 +17,11 @@ namespace smartAlumnl_client.Login
         #region 属性定义
 
         /// <summary>
+        /// 通信套接字
+        /// </summary>
+        private TcpClient client;
+
+        /// <summary>
         ///  发送缓冲区1024字节。
         /// </summary>
         private const int SEND_BUF_LENG = 1024;
@@ -43,7 +48,6 @@ namespace smartAlumnl_client.Login
             serverPort = 12345;
         }
 
-        #region 登录验证
         /// <summary>
         /// 登录按钮被单击事件
         /// </summary>
@@ -57,6 +61,7 @@ namespace smartAlumnl_client.Login
                 string str_Account = tb_Account.Text;
                 /// 获取密码
                 string str_Password = tb_Password.Text;
+
                 if (str_Account != string.Empty && str_Password != string.Empty)
                 {
                     /// 请求登录，返回登录结果
@@ -73,24 +78,8 @@ namespace smartAlumnl_client.Login
                             break;
                     }
 
-                    ///// 学号 = 密码
-                    //string queryStr = "SELECT * FROM SA_Login where SNo = '"+str_Account+"' and SNo = '"+str_Password+"'";
-
-                    //DataSet resultDs = AccessHelper.dataSet(queryStr);
-                    //if (resultDs.Tables[0].Rows.Count > 0)
-                    //{
-                    //    /// 提示
-                    //    ClientScript.RegisterStartupScript(typeof(string), "print", "<script>alert('登录成功')</script>");
-                    //}
-                    //else
-                    //{
-                    //    /// 提示
-                    //    ClientScript.RegisterStartupScript(typeof(string), "print", "<script>alert('用户名或者密码错误，请重新输入')</script>");
-
-                    //    /// 清空输入
-                    //    tb_Account.Text = "";
-                    //    tb_Password.Text = "";
-                    //}
+                    /// 接收服务器返回消息
+                    
                 }
                 else
                 {
@@ -103,44 +92,71 @@ namespace smartAlumnl_client.Login
             }
         }
 
+        #region 接收服务器登录的反馈消息
+        /// <summary>
+        /// 接收服务器登录的反馈消息
+        /// </summary>
+        /// <returns>成功登录返回true,失败返回false</returns>
+        private bool RecvFromSever()
+        {
+            byte []recvBuf = new byte[8];
+            client.GetStream().Read(recvBuf, 0, recvBuf.Length);
+
+            int result =Int32.Parse( Encoding.Unicode.GetString(recvBuf));
+            bool login_Status = false;
+            switch (result)
+            {
+                case MsgType.LOGIN_FAILED:
+                    login_Status = false;
+                    break;
+                case MsgType.LOGIN_SUCCESS:
+                    login_Status = true;
+                    break;
+                default:
+                    break;
+            }
+            return login_Status;
+        }
+        #endregion
+
         #region 请求结果
         private int IsAvailable(string accout, string pwd)
         {
             /// 请求消息格式：|用户名|密码|消息类型|
-            string msg = "|" + accout + "|" + pwd+"|"+MsgType.LOGIN.ToString()+"|";
-            
+            string msg = "|" + accout + "|" + pwd+"|"+"1001|";
+
             /// 将发送消息编码成二进制
-            byte[] msgByte = Encoding.Unicode.GetBytes(msg);
+            byte[] msgarr = Encoding.Unicode.GetBytes(msg);
 
             /// 获取消息长度
-            int msgByteLength = msgByte.Length;
+            int msglen = msgarr.Length;
 
-            byte[] lengthArr = BitConverter.GetBytes(msgByteLength);
+            byte[] lenarr = BitConverter.GetBytes(msglen);
 
             /// 拷贝int
-            Array.Copy(lengthArr, SEND_BUF, lengthArr.Length);
+            Array.Copy(lenarr, SEND_BUF, lenarr.Length);
 
-            /// 拷贝 msgByte 
-            Array.Copy(msgByte, 0, SEND_BUF, 4, msgByte.Length);
+            /// 拷贝 msg
+            Array.Copy(msgarr, 0, SEND_BUF,  4, msgarr.Length);
 
 
             /// 创建通信套接字
-            TcpClient client = new TcpClient();
+            client = new TcpClient();
             /// 连接服务器
             client.Connect(serverIP, serverPort);
 
             /// 发送和接收超时都为60秒
-            client.SendTimeout = 60 * 1000;
-            client.ReceiveTimeout = 60 * 1000;
+            //client.SendTimeout = 60 * 1000;
+            //client.ReceiveTimeout = 60 * 1000;
 
              /// 发送数据
-                NetworkStream ns = client.GetStream();
+            NetworkStream ns = client.GetStream();
             try
             {
                 lock (ns)
                 {
-                     ns.Write(SEND_BUF, 0, lengthArr.Length + msgByte.Length);
-                     ns.Flush();
+                    ns.Write(SEND_BUF, 0, lenarr.Length + msgarr.Length);
+                    ns.Flush();
                 }
             }
             catch (Exception ex)
@@ -153,8 +169,8 @@ namespace smartAlumnl_client.Login
             }
             
             /// 接收服务器返回消息
-            byte[] recvBuf = new byte[4];
-            int login_Status = MyNetAPI.Receive(ns, recvBuf, 4);
+            byte[] recvBuf = new byte[8];
+            int login_Status = MyNetAPI.Receive(ns, recvBuf, 8);
 
             /// 断开连接
             ns.Dispose();
@@ -162,11 +178,10 @@ namespace smartAlumnl_client.Login
             client.Close();
 
             /// 解析消息中返回的登录状态
-            login_Status = BitConverter.ToInt32(recvBuf, 0);
+            login_Status = Int32.Parse(Encoding.Unicode.GetString(recvBuf));
 
             return login_Status;
         }
-        #endregion
         #endregion
     }
 }

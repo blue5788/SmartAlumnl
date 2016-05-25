@@ -8,6 +8,8 @@ using System.Threading;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Serialization;
 
+using System.Windows.Forms;
+
 namespace server
 {
     public class SocketServerManager
