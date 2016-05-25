@@ -1,0 +1,8 @@
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\bin\smartAlumnl_client.dll.config
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\bin\smartAlumnl_client.dll
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\bin\smartAlumnl_client.pdb
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\obj\Debug\client.csprojResolveAssemblyReference.cache
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\obj\Debug\smartAlumnl_client.dll
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\obj\Debug\smartAlumnl_client.pdb
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\bin\NetWorkEx.exe
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\smartAlumnl_client\bin\NetWorkEx.pdb

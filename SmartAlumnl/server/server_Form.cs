@@ -101,13 +101,14 @@ namespace server
             if (!dm.IsUserAvailable())
             {
                 dm.OnSendUserIsNotAvailable();
-                return;
+                /// return;
             }
 
             /// 判断消息类型
             switch (dm.GetMsgType())
             {
-                case MessageType.LOGIN_login:
+                case MsgType.LOGIN:
+                    MessageBox.Show("收到登录信息了");
                     break;
                 default:
                     break;

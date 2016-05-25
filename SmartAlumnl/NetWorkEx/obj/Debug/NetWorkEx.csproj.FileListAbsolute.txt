@@ -5,3 +5,10 @@ C:\Users\Mac\Desktop\SmartAlumnl\NetWorkEx\bin\Debug\NetWorkEx.exe
 C:\Users\Mac\Desktop\SmartAlumnl\NetWorkEx\bin\Debug\NetWorkEx.pdb
 C:\Users\Mac\Desktop\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.exe
 C:\Users\Mac\Desktop\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.pdb
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\bin\Debug\NetWorkEx.exe.config
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\bin\Debug\NetWorkEx.exe
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\bin\Debug\NetWorkEx.pdb
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.Properties.Resources.resources
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.csproj.GenerateResource.Cache
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.exe
+C:\Users\Mac\Desktop\SmartAlumnl\SmartAlumnl\NetWorkEx\obj\Debug\NetWorkEx.pdb

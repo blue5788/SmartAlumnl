@@ -57,9 +57,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Login\login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessHelper.cs" />
+    <Compile Include="Login\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,8 +83,13 @@
   <ItemGroup>
     <Folder Include="GroupChat\" />
     <Folder Include="HotTopic\" />
-    <Folder Include="Login\" />
     <Folder Include="Personal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetWorkEx\NetWorkEx.csproj">
+      <Project>{783f4670-7018-485d-83cd-1a8f1c014ddc}</Project>
+      <Name>NetWorkEx</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
